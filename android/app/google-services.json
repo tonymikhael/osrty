@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "74779180120",
+    "project_id": "osrty-fd8ed",
+    "storage_bucket": "osrty-fd8ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74779180120:android:4a3077152263c901299e2d",
+        "android_client_info": {
+          "package_name": "com.example.osrty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbvvSIQUS8Nq-ymvgf9O3z-WUY0JfzUiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
