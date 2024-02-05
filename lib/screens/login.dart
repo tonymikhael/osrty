@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:osrty/components/login_button.dart';
 import 'package:osrty/components/text_form_field.dart';
@@ -23,10 +24,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String password = "";
   bool isLoading = false;
-
+  bool checkBox = false;
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var myCubit = BlocProvider.of<OsrtyCubit>(context);
+
     final _formKey = GlobalKey<FormState>();
     return ModalProgressHUD(
       inAsyncCall: isLoading,
@@ -61,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     CustomizedTextFormField(
+                      controller: emailController,
                       onChanged: (value) {
                         myCubit.email = value;
                       },
@@ -76,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20,
                     ),
                     CustomizedTextFormField(
+                      controller: passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter some text';
@@ -92,6 +98,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 20,
                     ),
+                    // Row(
+                    //   children: [
+                    //     Checkbox(
+                    //         value: checkBox,
+                    //         onChanged: (value) {
+                    //           setState(() {});
+                    //           checkBox = value!;
+                    //           if (checkBox) {
+                    //             myCubit.box.put("signIn", {
+                    //               'signIn': true,
+                    //             });
+                    //             myCubit.box
+                    //                 .put("email", {"email": myCubit.email});
+                    //           }
+                    //         }),
+                    //     Text(
+                    //       "stay signin?",
+                    //       style: TextStyle(fontSize: 16),
+                    //     )
+                    //   ],
+                    // ),
                     CustomizedButton(
                       hintText: "LOG IN",
                       onPressed: () async {
@@ -141,6 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           }
                         }
+                        emailController.text = myCubit.email;
+                        passwordController.text = password;
                         setState(() {
                           isLoading = false;
                         });

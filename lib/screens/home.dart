@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:osrty/cubit/osrty_cubit.dart';
 import 'package:osrty/models/user_class.dart';
+import 'package:osrty/screens/home_screen.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 
 class Home extends StatefulWidget {
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 30, horizontal: 16),
                     child: TextField(
-                      onSubmitted: (value) {
+                      onChanged: (value) {
                         searcheValue = value;
                       },
                       decoration: InputDecoration(
@@ -100,12 +101,10 @@ class _HomeState extends State<Home> {
                                 onLongPress: () {
                                   PanaraConfirmDialog.show(
                                     context,
-
                                     title: "Delete",
                                     message: "do you want to delete this user?",
                                     confirmButtonText: "Confirm",
                                     cancelButtonText: "Cancel",
-
                                     onTapCancel: () {
                                       Navigator.pop(context);
                                     },
@@ -115,7 +114,7 @@ class _HomeState extends State<Home> {
                                           .collection('${myCubit.email}')
                                           .doc(id)
                                           .delete();
-                                      // Navigator.pop(context);
+                                      Navigator.pop(context);
                                     },
                                     panaraDialogType: PanaraDialogType.error,
                                     barrierDismissible:
