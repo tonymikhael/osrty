@@ -1,21 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:osrty/cubit/osrty_cubit.dart';
-import 'package:osrty/screens/add.dart';
-import 'package:osrty/screens/attendance.dart';
-import 'package:osrty/screens/choose_screen.dart';
-import 'package:osrty/screens/home_screen.dart';
+import 'package:osrty/screens/introduction_screen.dart';
 import 'package:osrty/screens/login.dart';
-import 'package:osrty/screens/sign_up.dart';
-import 'package:osrty/screens/splash_screen.dart';
 // Import the generated file
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:osrty/firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
@@ -30,8 +23,16 @@ void main() async {
 
   //for hive box
   await Hive.initFlutter();
+
   WidgetsFlutterBinding.ensureInitialized();
+  // final SharedPreferences prefs = await SharedPreferences.getInstance();
+  // prefs.setBool('opened', false);
+
   Box box = await Hive.openBox<Map<dynamic, dynamic>>('users2');
+  Box box2 = await Hive.openBox<bool>('intro');
+
+  box2.add(false);
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -65,6 +66,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
+  var box = Hive.box<bool>("intro");
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'App Title',
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: box.getAt(0)! ? LoginScreen() : IntroductionScreen(),
       ),
     );
   }

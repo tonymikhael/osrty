@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
 
                             title: "Delete",
-                            message: "do you want to delete your all list?",
+                            message: "هل تريد مسح القائمة كلها؟",
                             confirmButtonText: "Confirm",
                             cancelButtonText: "Cancel",
 
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.favorite),
-                      label: 'Favorite',
+                      label: 'Favourite',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.event),

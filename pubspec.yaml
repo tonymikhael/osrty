@@ -50,8 +50,11 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.17.0
+  intro_slider: ^4.2.1
+  introduction_screen: ^3.1.12
   modal_progress_hud_nsn: ^0.5.1
   panara_dialogs: ^0.1.4
+  shared_preferences: ^2.2.2
   url_launcher: ^6.2.4
 
 dev_dependencies:
@@ -64,7 +67,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon_launcher.jpg"
+  image_path: "assets/ic_launcher.jpg.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
 
 flutter_native_splash:
@@ -83,6 +86,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/screenshoots/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

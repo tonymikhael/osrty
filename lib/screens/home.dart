@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
                                   PanaraConfirmDialog.show(
                                     context,
                                     title: "Delete",
-                                    message: "do you want to delete this user?",
+                                    message: "مسح ذلك المخدوم ؟",
                                     confirmButtonText: "Confirm",
                                     cancelButtonText: "Cancel",
                                     onTapCancel: () {

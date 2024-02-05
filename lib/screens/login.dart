@@ -13,6 +13,7 @@ import 'package:osrty/constants.dart';
 import 'package:osrty/cubit/osrty_cubit.dart';
 import 'package:osrty/screens/choose_screen.dart';
 import 'package:osrty/screens/sign_up.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -27,6 +28,16 @@ class _LoginScreenState extends State<LoginScreen> {
   bool checkBox = false;
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var box = Hive.box<bool>("intro");
+    box.put(0, true);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var myCubit = BlocProvider.of<OsrtyCubit>(context);
